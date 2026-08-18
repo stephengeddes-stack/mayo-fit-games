@@ -1,31 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayo Fit Games</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0/dist/umd/supabase.min.js">
-function openLeadModal(id){q('#'+id).classList.add('on')}
-function closeLeadModal(id){q('#'+id).classList.remove('on')}
-const oi=q('#openInterest'),os=q('#openSponsor');
-if(oi)oi.onclick=()=>openLeadModal('interestModal');
-if(os)os.onclick=()=>openLeadModal('sponsorModal');
-qa('[data-close]').forEach(b=>b.onclick=()=>closeLeadModal(b.dataset.close));
-qa('.lead-modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
-
-async function submitLead(formId,table,msgId,fields,successText){
-  const form=q('#'+formId),msg=q('#'+msgId);
-  if(!form||!db)return;
-  form.addEventListener('submit',async e=>{
-    e.preventDefault();
-    const btn=form.querySelector('button[type="submit"]');
-    btn.disabled=true; msg.textContent='Sending…';
-    const fd=new FormData(form),payload={};
-    fields.forEach(k=>{const v=(fd.get(k)||'').toString().trim(); if(v)payload[k]=v});
-    const {error}=await db.from(table).insert(payload);
-    if(error){msg.textContent='Could not send. Please try again.';btn.disabled=false;return}
-    form.reset(); msg.textContent=successText; btn.disabled=false;
-    setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
-  });
-}
-submitLead('interestForm','mfg_2027_interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
-submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
-
-</script><style>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayo Fit Games</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0/dist/umd/supabase.min.js"></script><style>
 :root{--orange:#f15a24;--orange2:#ff6a00;--ink:#070707;--panel:#111;--panel2:#171717;--line:#343434;--muted:#aaa;--white:#f6f3ed}
 *{box-sizing:border-box}
 html{background:var(--ink)}
@@ -630,6 +603,32 @@ document.getElementById('saveResultBtn')?.addEventListener('click',async()=>{
 db.auth.onAuthStateChange(()=>setTimeout(refreshAuthUI,0));
 refreshAuthUI();
 
+
+function openLeadModal(id){q('#'+id).classList.add('on')}
+function closeLeadModal(id){q('#'+id).classList.remove('on')}
+const oi=q('#openInterest'),os=q('#openSponsor');
+if(oi)oi.onclick=()=>openLeadModal('interestModal');
+if(os)os.onclick=()=>openLeadModal('sponsorModal');
+qa('[data-close]').forEach(b=>b.onclick=()=>closeLeadModal(b.dataset.close));
+qa('.lead-modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
+
+async function submitLead(formId,table,msgId,fields,successText){
+  const form=q('#'+formId),msg=q('#'+msgId);
+  if(!form||!db)return;
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const btn=form.querySelector('button[type="submit"]');
+    btn.disabled=true; msg.textContent='Sending…';
+    const fd=new FormData(form),payload={};
+    fields.forEach(k=>{const v=(fd.get(k)||'').toString().trim(); if(v)payload[k]=v});
+    const {error}=await db.from(table).insert(payload);
+    if(error){msg.textContent='Could not send. Please try again.';btn.disabled=false;return}
+    form.reset(); msg.textContent=successText; btn.disabled=false;
+    setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
+  });
+}
+submitLead('interestForm','mfg_2027_interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
+submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
 </script>
 <div class="lead-modal" id="interestModal">
   <div class="lead-box">
