@@ -649,7 +649,7 @@ function submitLead(formId,type,msgId,fields,successText){
     try{
       const r=await fetch(P+'/functions/v1/submit-2027-lead',{
         method:'POST',
-        headers:{'Content-Type':'application/json','apikey':K},
+        headers:{'Content-Type':'text/plain;charset=UTF-8'},
         body:JSON.stringify(payload)
       });
       const data=await r.json().catch(()=>({}));
@@ -665,8 +665,10 @@ function submitLead(formId,type,msgId,fields,successText){
     }
   });
 }
-submitLead('interestForm','interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
-submitLead('sponsorForm','sponsor','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
+document.addEventListener('DOMContentLoaded',()=>{
+  submitLead('interestForm','interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
+  submitLead('sponsorForm','sponsor','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
+});
 
 
 async function load2027Leads(){
@@ -675,7 +677,22 @@ async function load2027Leads(){
   if(!ir||!sr||!db)return;
   ir.innerHTML='<tr><td colspan="4">Loading…</td></tr>';
   sr.innerHTML='<tr><td colspan="6">Loading…</td></tr>';
-  const {data,error}=await db.functions.invoke('owner-manage-staff',{body:{action:'list_2027_leads'}});
+  const {data:{session}}=await db.auth.getSession();
+  if(!session){
+    ir.innerHTML='<tr><td colspan="4">Sign in as Owner/Admin to view 2027 leads.</td></tr>';
+    sr.innerHTML='<tr><td colspan="6">Sign in as Owner/Admin to view sponsor enquiries.</td></tr>';
+    return;
+  }
+  const r=await fetch(P+'/functions/v1/owner-manage-staff',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'Authorization':'Bearer '+session.access_token
+    },
+    body:JSON.stringify({action:'list_2027_leads'})
+  });
+  const data=await r.json().catch(()=>({}));
+  const error=!r.ok?{message:data?.error||('HTTP '+r.status)}:null;
   if(error||data?.error){
     const msg=(data?.error||error?.message||'Unknown error');
     ir.innerHTML=`<tr><td colspan="4">Could not load leads: ${msg}</td></tr>`;
