@@ -286,7 +286,7 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
     return `<div class="champion-card"><div class="ey">${d.name} • 2026 CHAMPION</div><div class="champ-name">${champ?champ.display_name:'—'}</div><div class="champ-pts">${champ?Number(champ.total_points||0).toFixed(0)+' pts':'—'}</div></div>`
   }).join('')
 }
-function renderChampions();renderPodiums(){
+function renderPodiums(){
   const holder=q('#podiums');if(!holder)return;
   const wanted=['Male Singles','Female Singles','Team'];
   const divisions=wanted.map(n=>ds.find(d=>(d.name||'').toLowerCase()===n.toLowerCase())||ds.find(d=>(d.name||'').toLowerCase().includes(n.toLowerCase().replace('s','')))).filter(Boolean);
@@ -305,7 +305,7 @@ function render(){
   if(f&&f!='all')a=a.filter(x=>x.division_id==f);
   a.sort((a,b)=>Number(b.total_points)-Number(a.total_points));
   q('#rows').innerHTML=a.length?a.map((x,i)=>`<tr><td><b>${i+1}</b></td><td><b>${x.display_name}</b></td><td>${dn(x.division_id)}</td><td>${x.events_scored}</td><td><b>${x.total_points}</b></td></tr>`).join(''):'<tr><td colspan="5">No final results available yet.</td></tr>';
-  renderPodiums()
+  renderChampions();renderPodiums()
 }q('#filter').onchange=render;if(db)db.channel('live').on('postgres_changes',{event:'*',schema:'public',table:'results'},load).subscribe();q('#reg').onsubmit=async e=>{if(!db){q('#msg').textContent='Registration is unavailable in offline preview mode.';return;}e.preventDefault();let f=new FormData(e.target),o=Object.fromEntries(f.entries());o.event_id=E;o.waiver_accepted=f.has('waiver_accepted');o.photo_consent=f.has('photo_consent');let{error}=await db.from('registrations').insert(o);q('#msg').textContent=error?error.message:'Registration saved successfully.';if(!error)e.target.reset()};load()
 // ---- Admin / Judge scoring ----
 const authLoggedOut=document.getElementById('authLoggedOut');
