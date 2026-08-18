@@ -226,7 +226,31 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
       <h3 style="margin-top:8px">Staff Management</h3>
       <p class="muted">Create staff logins, choose their role and change judge event access at any time.</p>
 
-      <div class="card" style="margin:14px 0;padding:16px">
+      
+      <div class="card" id="ownerLeadsCard" style="margin:14px 0;padding:16px">
+        <div class="ey">OWNER / ADMIN</div>
+        <h3 style="margin-top:8px">2027 Leads</h3>
+        <p class="muted">Athlete interest and sponsorship enquiries submitted through the website.</p>
+        <button class="btn" type="button" id="refreshLeadsBtn" style="margin-bottom:14px">Refresh Leads</button>
+        <div style="display:grid;grid-template-columns:1fr;gap:16px">
+          <div>
+            <div class="ey">REGISTER INTEREST</div>
+            <div class="table" style="margin-top:8px"><table>
+              <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Date</th></tr></thead>
+              <tbody id="interestLeadRows"><tr><td colspan="4">Loading…</td></tr></tbody>
+            </table></div>
+          </div>
+          <div>
+            <div class="ey">SPONSOR 2027</div>
+            <div class="table" style="margin-top:8px"><table>
+              <thead><tr><th>Name</th><th>Business</th><th>Email</th><th>Phone</th><th>Message</th><th>Date</th></tr></thead>
+              <tbody id="sponsorLeadRows"><tr><td colspan="6">Loading…</td></tr></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+<div class="card" style="margin:14px 0;padding:16px">
         <h3 style="margin-top:0">Create staff account</h3>
         <div class="form">
           <label>Name<input id="newStaffName" autocomplete="name" placeholder="e.g. Nicola Granahan"></label>
@@ -612,23 +636,56 @@ if(os)os.onclick=()=>openLeadModal('sponsorModal');
 qa('[data-close]').forEach(b=>b.onclick=()=>closeLeadModal(b.dataset.close));
 qa('.lead-modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
 
-async function submitLead(formId,table,msgId,fields,successText){
+async function submitLead(formId,type,msgId,fields,successText){
   const form=q('#'+formId),msg=q('#'+msgId);
   if(!form||!db)return;
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     const btn=form.querySelector('button[type="submit"]');
     btn.disabled=true; msg.textContent='Sending…';
-    const fd=new FormData(form),payload={};
+    const fd=new FormData(form),payload={type};
     fields.forEach(k=>{const v=(fd.get(k)||'').toString().trim(); if(v)payload[k]=v});
-    const {error}=await db.from(table).insert(payload);
-    if(error){msg.textContent='Could not send. Please try again.';btn.disabled=false;return}
-    form.reset(); msg.textContent=successText; btn.disabled=false;
+    const {data,error}=await db.functions.invoke('submit-2027-lead',{body:payload});
+    if(error||data?.error){
+      msg.textContent='Could not send. Please try again.';
+      btn.disabled=false;
+      return;
+    }
+    form.reset();
+    msg.textContent=successText;
+    btn.disabled=false;
     setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
   });
 }
-submitLead('interestForm','mfg_2027_interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
-submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
+submitLead('interestForm','interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
+submitLead('sponsorForm','sponsor','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
+
+
+async function load2027Leads(){
+  const ir=document.getElementById('interestLeadRows');
+  const sr=document.getElementById('sponsorLeadRows');
+  if(!ir||!sr||!db)return;
+  ir.innerHTML='<tr><td colspan="4">Loading…</td></tr>';
+  sr.innerHTML='<tr><td colspan="6">Loading…</td></tr>';
+  const {data,error}=await db.functions.invoke('owner-manage-staff',{body:{action:'list_2027_leads'}});
+  if(error||data?.error){
+    const msg=(data?.error||error?.message||'Unknown error');
+    ir.innerHTML=`<tr><td colspan="4">Could not load leads: ${msg}</td></tr>`;
+    sr.innerHTML=`<tr><td colspan="6">Could not load leads: ${msg}</td></tr>`;
+    return;
+  }
+  const interest=data?.interest||[];
+  const sponsors=data?.sponsors||[];
+  ir.innerHTML=interest.length?interest.map(x=>`<tr><td><b>${x.name||''}</b></td><td>${x.email||''}</td><td>${x.phone||''}</td><td>${x.created_at?new Date(x.created_at).toLocaleDateString():''}</td></tr>`).join(''):'<tr><td colspan="4">No 2027 interest registrations yet.</td></tr>';
+  sr.innerHTML=sponsors.length?sponsors.map(x=>`<tr><td><b>${x.name||''}</b></td><td>${x.business||''}</td><td>${x.email||''}</td><td>${x.phone||''}</td><td>${x.message||''}</td><td>${x.created_at?new Date(x.created_at).toLocaleDateString():''}</td></tr>`).join(''):'<tr><td colspan="6">No sponsor enquiries yet.</td></tr>';
+}
+document.getElementById('refreshLeadsBtn')?.addEventListener('click',load2027Leads);
+document.addEventListener('click',e=>{
+  const b=e.target.closest?.('[data-v="admin"]');
+  if(b)setTimeout(load2027Leads,500);
+});
+setTimeout(load2027Leads,1500);
+
 </script>
 <div class="lead-modal" id="interestModal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="lead-box">
