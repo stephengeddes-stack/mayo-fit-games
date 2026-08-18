@@ -138,7 +138,7 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
 .lead-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:#0d0d0d;border:1px solid #3a3a3a;padding:24px;position:relative}
 .lead-box:before{content:"";position:absolute;left:0;top:0;width:90px;height:5px;background:var(--orange)}
 .lead-box h2{margin-top:8px}
-.lead-close{position:absolute;right:14px;top:14px;background:#161616;color:#fff;border:1px solid #3a3a3a;width:40px;height:40px;font-size:20px}
+.lead-close{position:absolute;right:14px;top:14px;background:#161616;color:#fff;border:1px solid #3a3a3a;width:44px;height:44px;font-size:24px;line-height:1;z-index:5;touch-action:manipulation}
 .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .lead-grid .full{grid-column:1/-1}
 .lead-actions{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
@@ -630,9 +630,9 @@ async function submitLead(formId,table,msgId,fields,successText){
 submitLead('interestForm','mfg_2027_interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
 submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
 </script>
-<div class="lead-modal" id="interestModal">
+<div class="lead-modal" id="interestModal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="lead-box">
-    <button class="lead-close" type="button" data-close="interestModal">×</button>
+    <button class="lead-close" type="button" aria-label="Close" onclick="document.getElementById('interestModal').classList.remove('on')">×</button>
     <div class="ey">MAYO FIT GAMES 2027</div>
     <h2>Register Interest</h2>
     <p class="muted">Be first to hear about the 2027 date, venue and registration.</p>
@@ -650,9 +650,9 @@ submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business
   </div>
 </div>
 
-<div class="lead-modal" id="sponsorModal">
+<div class="lead-modal" id="sponsorModal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="lead-box">
-    <button class="lead-close" type="button" data-close="sponsorModal">×</button>
+    <button class="lead-close" type="button" aria-label="Close" onclick="document.getElementById('sponsorModal').classList.remove('on')">×</button>
     <div class="ey">MAYO FIT GAMES 2027</div>
     <h2>Sponsor 2027</h2>
     <p class="muted">Interested in partnering with Mayo Fit Games? Leave your details and we’ll have your enquiry ready to follow up.</p>
