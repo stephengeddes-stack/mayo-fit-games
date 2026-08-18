@@ -1,4 +1,31 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayo Fit Games</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0/dist/umd/supabase.min.js"></script><style>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mayo Fit Games</title><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.111.0/dist/umd/supabase.min.js">
+function openLeadModal(id){q('#'+id).classList.add('on')}
+function closeLeadModal(id){q('#'+id).classList.remove('on')}
+const oi=q('#openInterest'),os=q('#openSponsor');
+if(oi)oi.onclick=()=>openLeadModal('interestModal');
+if(os)os.onclick=()=>openLeadModal('sponsorModal');
+qa('[data-close]').forEach(b=>b.onclick=()=>closeLeadModal(b.dataset.close));
+qa('.lead-modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
+
+async function submitLead(formId,table,msgId,fields,successText){
+  const form=q('#'+formId),msg=q('#'+msgId);
+  if(!form||!db)return;
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const btn=form.querySelector('button[type="submit"]');
+    btn.disabled=true; msg.textContent='Sending…';
+    const fd=new FormData(form),payload={};
+    fields.forEach(k=>{const v=(fd.get(k)||'').toString().trim(); if(v)payload[k]=v});
+    const {error}=await db.from(table).insert(payload);
+    if(error){msg.textContent='Could not send. Please try again.';btn.disabled=false;return}
+    form.reset(); msg.textContent=successText; btn.disabled=false;
+    setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
+  });
+}
+submitLead('interestForm','mfg_2027_interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
+submitLead('sponsorForm','mfg_2027_sponsor_leads','sponsorMsg',['name','business','email','phone','message'],'Thanks — sponsor enquiry received ✓');
+
+</script><style>
 :root{--orange:#f15a24;--orange2:#ff6a00;--ink:#070707;--panel:#111;--panel2:#171717;--line:#343434;--muted:#aaa;--white:#f6f3ed}
 *{box-sizing:border-box}
 html{background:var(--ink)}
@@ -132,7 +159,21 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
 .mfg-2027>*{position:relative;z-index:2}.mfg-2027 h2{font-size:clamp(62px,11vw,125px);line-height:.8;margin:12px 0 18px}.mfg-2027 p{max-width:620px;font-size:18px;line-height:1.55}.interest-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.interest-row .btn:first-child{background:var(--orange);color:#080808;border-color:var(--orange)}
 @media(max-width:700px){.photo-break{min-height:570px;background-position:center top}.photo-break-copy{padding:28px 22px}.photo-break-copy h2{font-size:55px}.mfg-2027{min-height:600px;background-position:center}.interest-row{display:grid}.interest-row .btn{width:100%}}
 
-</style></head><body><header class="wrap"><div class="top"><div><div class="ey">MAYO FIT GAMES</div><b>STRONGER TOGETHER</b><div class="brand-stripe"><span></span><span></span><span></span></div></div><span id="status" class="btn">CONNECTING</span></div></header><nav><button data-v="home" class="active">Home</button><button data-v="about">About</button><button data-v="results">Results</button><button data-v="register">Register</button><button data-v="gallery">Gallery</button><button data-v="sponsors">Sponsors</button><button data-v="junior">Junior Fit Games</button><button data-v="admin">Admin / Judge</button></nav><main class="wrap"><section id="home" class="view on"><div class="card hero"><div class="ey">MAYO FIT GAMES 2026</div><h1>Find Mayo's Fittest</h1><p class="muted">Live scoring, results, competitors, registrations and the story of the Games.</p><p><button class="btn" data-go="results">View live leaderboard</button> <button class="btn" data-go="gallery">View 2026 gallery</button></p><div class="brand-stripe"><span></span><span></span><span></span></div><p><button class="btn" data-go="junior">Junior Fit Games</button></p></div><div class="photo-break photo-three"><div class="photo-break-copy"><div class="ey">FIT • GRIT • COMMUNITY</div><h2>ONE DAY. ONE COMMUNITY.</h2><p>Competition at the sharp end. Fun, atmosphere and a place for every level everywhere else.</p></div></div><div class="card event-film"><div class="event-film-head"><div class="ey">2026 EVENT FILM</div><h2>More Than a Competition.</h2><p class="muted">Relive Mayo Fit Games 2026 — the competition, the crowd and the atmosphere.</p></div><div class="event-film-frame"><iframe src="https://www.youtube.com/embed/ZkmHx9OB3hE?rel=0&playsinline=1" title="Mayo Fit Games 2026 Event Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><div class="event-film-note">Press play to watch the official Mayo Fit Games 2026 event film.</div></div><div class="photo-break photo-one"><div class="photo-break-copy"><div class="ey">MAYO FIT GAMES</div><h2>BUILT FOR COMPETITION.</h2><p>From first-time competitors to athletes chasing the top of the podium. Everyone gets the same arena.</p></div></div><div class="grid"><div class="card stat"><span id="ath">0</span><small>COMPETITORS</small></div><div class="card stat"><span id="rc">0</span><small>RESULTS ENTERED</small></div><div class="card stat"><span>24</span><small>PHOTOS ONLINE</small></div></div><div class="mfg-2027"><div class="ey">NEXT UP</div><h2>MAYO FIT GAMES<br>2027.</h2><p><b>Think you've got what it takes?</b><br>Be first to hear about the 2027 date, venue and registration.</p><div class="interest-row"><button class="btn" onclick="alert('2027 interest registration is coming next.')">Register Interest →</button><button class="btn" onclick="alert('2027 sponsor enquiries are coming next.')">Sponsor 2027 →</button></div></div></section><section id="about" class="view"><div class="card"><div class="ey">ABOUT THE GAMES</div><h1 style="font-size:clamp(52px,8vw,92px)">More Than a Competition.</h1><p class="about-lead">Mayo Fit Games started with a simple idea — <strong>find Mayo’s fittest.</strong> But it has grown into something much bigger.</p><div class="about-copy"><p>At the sharp end of the competition, some seriously strong athletes go head-to-head to find out who really is the best. The events are designed to test <strong>strength, speed, endurance, power and grit</strong> — and winning Mayo Fit Games should mean something.</p><p>But you don’t have to be an elite athlete to take part. From beginners taking on their first fitness competition to experienced competitors chasing the top of the leaderboard, <strong>Mayo Fit Games is built for everyone willing to give it a go.</strong></p><p>And the competition is only part of the day. The real idea behind Mayo Fit Games is <strong>community</strong> — bringing people, gyms, clubs, businesses, friends and families together for a day with a proper event atmosphere.</p></div><div class="about-atmosphere"><div class="ey">THE FULL EVENT EXPERIENCE</div><b>Live DJ • Recovery Zone • Beat the Coach • Junior Fit Games • Spectators • Competition • Music • Craic</b></div><div class="about-points"><div class="about-point"><div class="ey">COMPETE</div><h3>From First-Timers to Elite</h3><p>Challenge yourself, chase the leaderboard or go head-to-head with some of the strongest all-round athletes around.</p></div><div class="about-point"><div class="ey">COMMUNITY</div><h3>Everyone Comes Together</h3><p>Gyms, clubs, local businesses, friends, families and supporters sharing one big day of fitness and fun.</p></div><div class="about-point"><div class="ey">ATMOSPHERE</div><h3>More Than the Events</h3><p>Come to compete. Come to support someone. Or just come for the atmosphere and be part of the day.</p></div></div><div class="about-finish"><h2>Find Mayo’s Fittest.</h2><div class="stronger">Stronger Together.</div></div></div></section><section id="results" class="view">
+
+.lead-modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:80;padding:18px}
+.lead-modal.on{display:grid}
+.lead-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:#0d0d0d;border:1px solid #3a3a3a;padding:24px;position:relative}
+.lead-box:before{content:"";position:absolute;left:0;top:0;width:90px;height:5px;background:var(--orange)}
+.lead-box h2{margin-top:8px}
+.lead-close{position:absolute;right:14px;top:14px;background:#161616;color:#fff;border:1px solid #3a3a3a;width:40px;height:40px;font-size:20px}
+.lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lead-grid .full{grid-column:1/-1}
+.lead-actions{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
+.lead-actions .btn{background:var(--orange);color:#080808;border-color:var(--orange)}
+.lead-msg{font-size:13px;color:#bbb}
+@media(max-width:650px){.lead-grid{grid-template-columns:1fr}.lead-grid .full{grid-column:1}.lead-box{padding:22px 16px}}
+
+</style></head><body><header class="wrap"><div class="top"><div><div class="ey">MAYO FIT GAMES</div><b>STRONGER TOGETHER</b><div class="brand-stripe"><span></span><span></span><span></span></div></div><span id="status" class="btn">CONNECTING</span></div></header><nav><button data-v="home" class="active">Home</button><button data-v="about">About</button><button data-v="results">Results</button><button data-v="register">Register</button><button data-v="gallery">Gallery</button><button data-v="sponsors">Sponsors</button><button data-v="junior">Junior Fit Games</button><button data-v="admin">Admin / Judge</button></nav><main class="wrap"><section id="home" class="view on"><div class="card hero"><div class="ey">MAYO FIT GAMES 2026</div><h1>Find Mayo's Fittest</h1><p class="muted">Live scoring, results, competitors, registrations and the story of the Games.</p><p><button class="btn" data-go="results">View live leaderboard</button> <button class="btn" data-go="gallery">View 2026 gallery</button></p><div class="brand-stripe"><span></span><span></span><span></span></div><p><button class="btn" data-go="junior">Junior Fit Games</button></p></div><div class="photo-break photo-three"><div class="photo-break-copy"><div class="ey">FIT • GRIT • COMMUNITY</div><h2>ONE DAY. ONE COMMUNITY.</h2><p>Competition at the sharp end. Fun, atmosphere and a place for every level everywhere else.</p></div></div><div class="card event-film"><div class="event-film-head"><div class="ey">2026 EVENT FILM</div><h2>More Than a Competition.</h2><p class="muted">Relive Mayo Fit Games 2026 — the competition, the crowd and the atmosphere.</p></div><div class="event-film-frame"><iframe src="https://www.youtube.com/embed/ZkmHx9OB3hE?rel=0&playsinline=1" title="Mayo Fit Games 2026 Event Film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div><div class="event-film-note">Press play to watch the official Mayo Fit Games 2026 event film.</div></div><div class="photo-break photo-one"><div class="photo-break-copy"><div class="ey">MAYO FIT GAMES</div><h2>BUILT FOR COMPETITION.</h2><p>From first-time competitors to athletes chasing the top of the podium. Everyone gets the same arena.</p></div></div><div class="grid"><div class="card stat"><span id="ath">0</span><small>COMPETITORS</small></div><div class="card stat"><span id="rc">0</span><small>RESULTS ENTERED</small></div><div class="card stat"><span>24</span><small>PHOTOS ONLINE</small></div></div><div class="mfg-2027"><div class="ey">NEXT UP</div><h2>MAYO FIT GAMES<br>2027.</h2><p><b>Think you've got what it takes?</b><br>Be first to hear about the 2027 date, venue and registration.</p><div class="interest-row"><button class="btn" id="openInterest">Register Interest →</button><button class="btn" id="openSponsor">Sponsor 2027 →</button></div></div></section><section id="about" class="view"><div class="card"><div class="ey">ABOUT THE GAMES</div><h1 style="font-size:clamp(52px,8vw,92px)">More Than a Competition.</h1><p class="about-lead">Mayo Fit Games started with a simple idea — <strong>find Mayo’s fittest.</strong> But it has grown into something much bigger.</p><div class="about-copy"><p>At the sharp end of the competition, some seriously strong athletes go head-to-head to find out who really is the best. The events are designed to test <strong>strength, speed, endurance, power and grit</strong> — and winning Mayo Fit Games should mean something.</p><p>But you don’t have to be an elite athlete to take part. From beginners taking on their first fitness competition to experienced competitors chasing the top of the leaderboard, <strong>Mayo Fit Games is built for everyone willing to give it a go.</strong></p><p>And the competition is only part of the day. The real idea behind Mayo Fit Games is <strong>community</strong> — bringing people, gyms, clubs, businesses, friends and families together for a day with a proper event atmosphere.</p></div><div class="about-atmosphere"><div class="ey">THE FULL EVENT EXPERIENCE</div><b>Live DJ • Recovery Zone • Beat the Coach • Junior Fit Games • Spectators • Competition • Music • Craic</b></div><div class="about-points"><div class="about-point"><div class="ey">COMPETE</div><h3>From First-Timers to Elite</h3><p>Challenge yourself, chase the leaderboard or go head-to-head with some of the strongest all-round athletes around.</p></div><div class="about-point"><div class="ey">COMMUNITY</div><h3>Everyone Comes Together</h3><p>Gyms, clubs, local businesses, friends, families and supporters sharing one big day of fitness and fun.</p></div><div class="about-point"><div class="ey">ATMOSPHERE</div><h3>More Than the Events</h3><p>Come to compete. Come to support someone. Or just come for the atmosphere and be part of the day.</p></div></div><div class="about-finish"><h2>Find Mayo’s Fittest.</h2><div class="stronger">Stronger Together.</div></div></div></section><section id="results" class="view">
 <div class="card results-hero">
   <div class="ey">MAYO FIT GAMES 2026</div>
   <h1>Final Results.</h1>
@@ -589,4 +630,47 @@ document.getElementById('saveResultBtn')?.addEventListener('click',async()=>{
 db.auth.onAuthStateChange(()=>setTimeout(refreshAuthUI,0));
 refreshAuthUI();
 
-</script></body></html>
+</script>
+<div class="lead-modal" id="interestModal">
+  <div class="lead-box">
+    <button class="lead-close" type="button" data-close="interestModal">×</button>
+    <div class="ey">MAYO FIT GAMES 2027</div>
+    <h2>Register Interest</h2>
+    <p class="muted">Be first to hear about the 2027 date, venue and registration.</p>
+    <form id="interestForm">
+      <div class="lead-grid">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label class="full">Phone <span class="muted">(optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+      </div>
+      <div class="lead-actions">
+        <button class="btn" type="submit">Register Interest →</button>
+        <span class="lead-msg" id="interestMsg"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="lead-modal" id="sponsorModal">
+  <div class="lead-box">
+    <button class="lead-close" type="button" data-close="sponsorModal">×</button>
+    <div class="ey">MAYO FIT GAMES 2027</div>
+    <h2>Sponsor 2027</h2>
+    <p class="muted">Interested in partnering with Mayo Fit Games? Leave your details and we’ll have your enquiry ready to follow up.</p>
+    <form id="sponsorForm">
+      <div class="lead-grid">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Business<input name="business" autocomplete="organization"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Phone <span class="muted">(optional)</span><input type="tel" name="phone" autocomplete="tel"></label>
+        <label class="full">Message<textarea name="message" rows="4" placeholder="Tell us a little about your business or what you have in mind."></textarea></label>
+      </div>
+      <div class="lead-actions">
+        <button class="btn" type="submit">Send Enquiry →</button>
+        <span class="lead-msg" id="sponsorMsg"></span>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body></html>
