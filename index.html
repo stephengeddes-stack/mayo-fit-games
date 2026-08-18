@@ -636,25 +636,33 @@ if(os)os.onclick=()=>openLeadModal('sponsorModal');
 qa('[data-close]').forEach(b=>b.onclick=()=>closeLeadModal(b.dataset.close));
 qa('.lead-modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('on')}));
 
-async function submitLead(formId,type,msgId,fields,successText){
+function submitLead(formId,type,msgId,fields,successText){
   const form=q('#'+formId),msg=q('#'+msgId);
-  if(!form||!db)return;
+  if(!form)return;
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     const btn=form.querySelector('button[type="submit"]');
-    btn.disabled=true; msg.textContent='Sending…';
+    if(btn)btn.disabled=true;
+    if(msg)msg.textContent='Sending…';
     const fd=new FormData(form),payload={type};
     fields.forEach(k=>{const v=(fd.get(k)||'').toString().trim(); if(v)payload[k]=v});
-    const {data,error}=await db.functions.invoke('submit-2027-lead',{body:payload});
-    if(error||data?.error){
-      msg.textContent='Could not send. Please try again.';
-      btn.disabled=false;
-      return;
+    try{
+      const r=await fetch(P+'/functions/v1/submit-2027-lead',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':K},
+        body:JSON.stringify(payload)
+      });
+      const data=await r.json().catch(()=>({}));
+      if(!r.ok||data?.error)throw new Error(data?.error||'Submission failed');
+      form.reset();
+      if(msg)msg.textContent=successText;
+      setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
+    }catch(err){
+      console.error('2027 lead submission failed',err);
+      if(msg)msg.textContent='Could not send. Please try again.';
+    }finally{
+      if(btn)btn.disabled=false;
     }
-    form.reset();
-    msg.textContent=successText;
-    btn.disabled=false;
-    setTimeout(()=>{const modal=form.closest('.lead-modal');if(modal)modal.classList.remove('on')},1800);
   });
 }
 submitLead('interestForm','interest','interestMsg',['name','email','phone'],'You’re on the 2027 interest list ✓');
