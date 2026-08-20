@@ -254,13 +254,16 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
 .reg27-hero:after{content:"2027";position:absolute;right:-18px;top:-35px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:clamp(150px,26vw,310px);color:rgba(241,90,36,.08);line-height:.85;pointer-events:none}
 .reg27-hero>*{position:relative;z-index:1}.reg27-hero h1{font-size:clamp(54px,9vw,104px);line-height:.84;margin:8px 0 14px}.reg27-hero p{max-width:760px;font-size:18px;line-height:1.55;color:#c7c3bf}
 .reg27-mode{display:inline-flex;align-items:center;gap:8px;border:1px solid #6a482d;background:#17100d;padding:8px 11px;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#ffb07a}
-.reg27-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.reg27-cat{border:1px solid #333;background:#101010;padding:18px;text-align:left;color:#fff;cursor:pointer;min-height:118px}.reg27-cat.active{border-color:var(--orange);box-shadow:inset 0 -4px 0 var(--orange)}.reg27-cat b{display:block;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:24px;text-transform:uppercase}.reg27-cat small{display:block;color:#888;margin-top:7px}.reg27-price{color:var(--orange);font-weight:950;margin-top:8px}
+.reg27-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.reg27-cat{border:1px solid #333;background:#101010;padding:18px;text-align:left;color:#fff;cursor:pointer;min-height:118px}.reg27-cat.active{border-color:var(--orange);box-shadow:inset 0 -4px 0 var(--orange)}.reg27-cat b{display:block;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:24px;text-transform:uppercase}.reg27-cat small{display:block;color:#888;margin-top:7px}.reg27-price{color:var(--orange);font-weight:950;margin-top:8px}
 .reg27-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reg27-card{border:1px solid #323232;background:#101010;padding:20px;margin:14px 0}.reg27-card h3{margin:3px 0 12px}.reg27-card .form{margin-top:12px}.athlete-block{border-top:1px solid #2f2f2f;padding-top:16px;margin-top:16px}.athlete-block:first-child{border-top:0;padding-top:0;margin-top:0}
 .waiver-box{max-height:290px;overflow:auto;border:1px solid #3b3b3b;background:#090909;padding:18px;line-height:1.6;color:#c5c5c5}.waiver-box h3{color:#fff}.waiver-box ul{padding-left:20px}.waiver-warning{border-left:4px solid var(--orange);padding:12px 14px;background:#17100d;color:#e7c5ae;margin:14px 0;font-size:13px}
 .reg27-summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;border-top:1px solid #333;padding-top:18px;margin-top:18px}.reg27-total{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:34px}.reg27-status{min-height:24px;margin-top:12px;color:#bbb}.reg27-status.good{color:#9ee072}.reg27-status.bad{color:#ff8e7f}
 .payment-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.payment-step{border:1px solid #303030;padding:12px;background:#0d0d0d;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.payment-step span{display:block;color:var(--orange);font-size:18px;margin-bottom:3px}
 .reg-admin-card{border-color:#4a2a1e!important}.status-pill{display:inline-block;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;border:1px solid #444}.status-paid{color:#a6e88b;border-color:#4d7c3d}.status-payment_pending{color:#ffd28e;border-color:#7a5f31}.status-draft{color:#bbb}.status-refunded,.status-cancelled{color:#ff9d91;border-color:#76423d}
 @media(max-width:850px){.reg27-grid{grid-template-columns:1fr 1fr}.payment-steps{grid-template-columns:1fr 1fr}}@media(max-width:650px){.reg27-grid{grid-template-columns:1fr}.reg27-form{grid-template-columns:1fr}.reg27-summary{grid-template-columns:1fr}.payment-steps{grid-template-columns:1fr}}
+
+
+.mfg27-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:120;display:none;align-items:center;justify-content:center;padding:16px}.mfg27-overlay.on{display:flex}.mfg27-box{width:min(860px,100%);max-height:92vh;overflow:auto;background:#0c0c0c;border:1px solid #444;padding:clamp(20px,4vw,36px);position:relative}.mfg27-close{position:absolute;top:12px;right:12px}.waiver-list{display:grid;gap:8px;margin:16px 0}.waiver-person{display:grid;grid-template-columns:1fr auto;gap:12px;border:1px solid #303030;background:#111;padding:13px}.waiver-ok{color:#9ee072}.waiver-wait{color:#ffd28e}.pay-lock{opacity:.5;cursor:not-allowed}
 
 </style></head><body><header class="wrap"><div class="top"><div><div class="ey">MAYO FIT GAMES</div><b>STRONGER TOGETHER</b><div class="brand-stripe"><span></span><span></span><span></span></div></div><span id="status" class="btn">CONNECTING</span></div></header><nav><button data-v="home" class="active">Home</button><button data-v="about">About</button><button data-v="results">Results</button><button data-v="register">Register</button><button data-v="gallery">Gallery</button><button data-v="shop">Shop</button><button data-v="sponsors">Sponsors</button><button data-v="junior">Junior Fit Games</button><button data-v="admin">Admin / Judge</button></nav><main class="wrap"><section id="home" class="view on"><div class="card hero"><div class="ey">MAYO FIT GAMES 2026</div><h1>Find Mayo's Fittest</h1><p class="muted">Live scoring, results, competitors, registrations and the story of the Games.</p><p><button class="btn" data-go="results">View live leaderboard</button> <button class="btn" data-go="gallery">View 2026 gallery</button></p><div class="brand-stripe"><span></span><span></span><span></span></div><p><button class="btn" data-go="junior">Junior Fit Games</button></p></div><div class="photo-break photo-three"><div class="photo-break-copy"><div class="ey">FIT • GRIT • COMMUNITY</div><h2>ONE DAY. ONE COMMUNITY.</h2><p>Competition at the sharp end. Fun, atmosphere and a place for every level everywhere else.</p></div></div><div class="card event-film">
 <div class="card next-chapter">
@@ -367,7 +370,7 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
       <button type="button" class="reg27-cat active" data-cat="male"><b>Male Singles</b><small>Individual entry</small><div class="reg27-price" data-price="male">Loading…</div></button>
       <button type="button" class="reg27-cat" data-cat="female"><b>Female Singles</b><small>Individual entry</small><div class="reg27-price" data-price="female">Loading…</div></button>
       <button type="button" class="reg27-cat" data-cat="team"><b>Team</b><small>4 athletes • one payment</small><div class="reg27-price" data-price="team">Loading…</div></button>
-      <button type="button" class="reg27-cat" data-cat="junior"><b>Junior</b><small>Parent / guardian consent</small><div class="reg27-price" data-price="junior">Loading…</div></button>
+      <button type="button" class="reg27-cat" data-cat="junior"><b>Junior</b><small>Parent / guardian consent</small><div class="reg27-price" data-price="junior">Loading…</div></button><button type="button" class="reg27-cat" data-cat="multi"><b>Family / Multiple</b><small>Several entries • one payment</small><div class="reg27-price">Calculated from entries</div></button>
     </div>
   </div>
 
@@ -384,7 +387,9 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
 
     <div class="reg27-card">
       <div class="ey">ATHLETE DETAILS</div><h3 id="athleteTitle">Competitor</h3>
+      <p class="muted" id="athleteHelp27">Each required adult waiver must be completed before payment unlocks.</p>
       <div id="reg27Athletes"></div>
+      <button class="btn" type="button" id="addCompetitor27" style="display:none;margin-top:14px">+ ADD ANOTHER COMPETITOR</button>
     </div>
 
     <div class="reg27-card" id="guardianWrap" style="display:none">
@@ -411,14 +416,14 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
         </ul>
       </div>
       <div style="margin-top:16px">
-        <label class="full"><input id="waiverAccepted27" style="width:auto" type="checkbox" required> I have read and accept the waiver/declaration above.</label>
+        <label class="full"><input id="waiverAccepted27" style="width:auto" type="checkbox" required> I have read and accept the waiver/declaration above. My signature applies to me and to any junior competitors for whom I am the parent/legal guardian. Other adult competitors must sign individually.</label>
         <label class="full" style="display:block;margin-top:12px">Digital signature — type your full name<input id="waiverSignature27" required placeholder="Full legal name"></label>
       </div>
     </div>
 
     <div class="reg27-card">
       <div class="ey">STEP 4</div><h3>Registration & Payment</h3>
-      <p class="muted">Your entry is only marked <b>PAID / CONFIRMED</b> after Stripe confirms a successful payment. Abandoned or failed payments remain separate in the admin dashboard.</p>
+      <p class="muted"><b>Payment is locked until every required waiver is complete.</b> Adult teammates/other adults receive their own secure waiver link automatically. Stripe only becomes available when waiver status is 100% complete.</p>
       <div class="reg27-summary">
         <div><div class="muted">Selected entry</div><b id="reg27SelectedLabel">Male Singles</b></div>
         <div class="reg27-total" id="reg27Total">—</div>
@@ -991,9 +996,11 @@ setTimeout(load2027Leads,1500);
 
 
 
-// ===== MFG 2027 REGISTRATION / WAIVER / PAYMENT =====
+
+// ===== MFG 2027 REGISTRATION / PARTICIPANT WAIVERS / PAYMENT GATING =====
 let reg27Category='male';
 let reg27Config={};
+let multiCount27=2;
 
 function money27(cents,currency='eur'){
   if(!Number.isFinite(Number(cents)))return '—';
@@ -1002,8 +1009,7 @@ function money27(cents,currency='eur'){
 async function loadReg27Config(){
   try{
     const r=await fetch(P+'/functions/v1/mfg27-registration-config');
-    const data=await r.json();
-    if(!r.ok||data?.error)throw new Error(data?.error||'Could not load prices');
+    const data=await r.json(); if(!r.ok||data?.error)throw new Error(data?.error||'Could not load prices');
     reg27Config=Object.fromEntries((data.config||[]).map(x=>[x.category,x]));
     document.querySelectorAll('[data-price]').forEach(el=>{
       const c=reg27Config[el.dataset.price];
@@ -1013,44 +1019,61 @@ async function loadReg27Config(){
     const anyLive=Object.values(reg27Config).some(x=>x.enabled);
     const mode=document.getElementById('reg27Mode');
     if(mode)mode.textContent=anyLive?'● REGISTRATION OPEN':'● BUILD / TEST MODE — PAYMENTS OFF';
-  }catch(e){
-    document.querySelectorAll('[data-price]').forEach(el=>el.textContent='Price TBC');
-  }
+  }catch(e){document.querySelectorAll('[data-price]').forEach(el=>el.textContent='Price TBC')}
 }
-function athleteFields27(i,count){
-  const label=count>1?`Athlete ${i+1}${i===0?' — Team Captain':''}`:'Competitor';
+function athleteFields27(i,count,entryCategory){
+  const team=reg27Category==='team';
+  const multi=reg27Category==='multi';
+  const label=team?`Athlete ${i+1}${i===0?' — Team Captain':''}`:(multi?`Competitor ${i+1}`:'Competitor');
+  const catSelect=multi?`<label>Entry category<select data-af="entry_category"><option value="male">Male Singles</option><option value="female">Female Singles</option><option value="junior">Junior Fit Games</option></select></label>`:'';
+  const remove=multi&&count>1?`<button class="btn" type="button" data-remove-athlete="${i}" style="margin-top:10px">Remove competitor</button>`:'';
   return `<div class="athlete-block" data-athlete="${i}">
     <div class="ey">${label}</div>
     <div class="reg27-form">
+      ${catSelect}
       <label>Full name<input data-af="full_name" required></label>
-      <label>Email<input data-af="email" type="email" ${count>1&&i>0?'required':''}></label>
+      <label>Email ${team&&i>0||multi?'<span class="muted">(required for adult competitors)</span>':''}<input data-af="email" type="email"></label>
       <label>Phone<input data-af="phone" type="tel"></label>
       <label>Date of birth<input data-af="date_of_birth" type="date"></label>
       <label>Emergency contact name<input data-af="emergency_contact_name"></label>
       <label>Emergency contact phone<input data-af="emergency_contact_phone" type="tel"></label>
-    </div>
+    </div>${remove}
   </div>`;
 }
 function renderReg27Athletes(){
-  const count=reg27Category==='team'?4:1;
+  const count=reg27Category==='team'?4:(reg27Category==='multi'?multiCount27:1);
   const holder=document.getElementById('reg27Athletes');
-  if(holder)holder.innerHTML=Array.from({length:count},(_,i)=>athleteFields27(i,count)).join('');
+  holder.innerHTML=Array.from({length:count},(_,i)=>athleteFields27(i,count)).join('');
+  holder.querySelectorAll('[data-remove-athlete]').forEach(b=>b.onclick=()=>{if(multiCount27>1){multiCount27--;renderReg27Athletes();updateReg27Summary()}});
+  holder.querySelectorAll('[data-af="entry_category"]').forEach(s=>s.onchange=updateReg27Summary);
   const team=document.getElementById('teamNameWrap'); if(team)team.style.display=reg27Category==='team'?'block':'none';
-  const guardian=document.getElementById('guardianWrap'); if(guardian)guardian.style.display=reg27Category==='junior'?'block':'none';
-  const title=document.getElementById('athleteTitle'); if(title)title.textContent=reg27Category==='team'?'Team of 4':(reg27Category==='junior'?'Junior Competitor':'Competitor');
+  const guardian=document.getElementById('guardianWrap'); if(guardian)guardian.style.display=(reg27Category==='junior'||reg27Category==='multi')?'block':'none';
+  const title=document.getElementById('athleteTitle'); if(title)title.textContent=reg27Category==='team'?'Team of 4':(reg27Category==='multi'?'Family / Multiple Competitors':(reg27Category==='junior'?'Junior Competitor':'Competitor'));
+  const help=document.getElementById('athleteHelp27'); if(help)help.textContent=reg27Category==='team'?'The captain completes their own waiver now. The other 3 adults are emailed individual secure waiver links. Payment stays locked until all 4 are complete.':reg27Category==='multi'?'One adult can register several competitors. Juniors can be covered by the registering parent/guardian; any other adults receive their own secure waiver link.':'This competitor must complete the required waiver before payment.';
+  const add=document.getElementById('addCompetitor27'); if(add)add.style.display=reg27Category==='multi'?'inline-block':'none';
   const gName=document.querySelector('[name="guardian_name"]'),gEmail=document.querySelector('[name="guardian_email"]');
   if(gName)gName.required=reg27Category==='junior'; if(gEmail)gEmail.required=reg27Category==='junior';
 }
+function currentMultiAmount27(){
+  let total=0,currency='eur';
+  document.querySelectorAll('#reg27Athletes [data-af="entry_category"]').forEach(s=>{const c=reg27Config[s.value];if(c){total+=Number(c.amount_cents||0);currency=c.currency||currency}});
+  return {total,currency};
+}
 function updateReg27Summary(){
+  const label=document.getElementById('reg27SelectedLabel'),total=document.getElementById('reg27Total');
+  if(reg27Category==='multi'){
+    const x=currentMultiAmount27();
+    if(label)label.textContent='Family / Multiple Entries';
+    if(total)total.textContent=x.total?money27(x.total,x.currency):'Calculated from entries';
+    return;
+  }
   const cfg=reg27Config[reg27Category];
-  const label=document.getElementById('reg27SelectedLabel');
-  const total=document.getElementById('reg27Total');
   if(label)label.textContent=cfg?.label||({male:'Male Singles',female:'Female Singles',team:'Team Entry',junior:'Junior Fit Games'}[reg27Category]);
   if(total)total.textContent=cfg?money27(cfg.amount_cents,cfg.currency):'Price TBC';
 }
+document.getElementById('addCompetitor27')?.addEventListener('click',()=>{multiCount27++;renderReg27Athletes();updateReg27Summary()});
 document.querySelectorAll('.reg27-cat').forEach(btn=>btn.addEventListener('click',()=>{
-  reg27Category=btn.dataset.cat;
-  document.querySelectorAll('.reg27-cat').forEach(x=>x.classList.toggle('active',x===btn));
+  reg27Category=btn.dataset.cat;document.querySelectorAll('.reg27-cat').forEach(x=>x.classList.toggle('active',x===btn));
   renderReg27Athletes();updateReg27Summary();
 }));
 renderReg27Athletes();loadReg27Config();
@@ -1058,77 +1081,94 @@ renderReg27Athletes();loadReg27Config();
 document.getElementById('reg27Form')?.addEventListener('submit',async e=>{
   e.preventDefault();
   const form=e.currentTarget,btn=document.getElementById('reg27Submit'),status=document.getElementById('reg27Status');
-  status.className='reg27-status';status.textContent='Saving registration…';btn.disabled=true;
+  status.className='reg27-status';status.textContent='Saving registration and checking waiver requirements…';btn.disabled=true;
   try{
     const fd=new FormData(form);
     const athletes=[...document.querySelectorAll('#reg27Athletes [data-athlete]')].map(block=>{
       const o={};block.querySelectorAll('[data-af]').forEach(inp=>o[inp.dataset.af]=inp.value.trim());return o;
     });
-    const payload={
-      category:reg27Category,
-      contact_name:(fd.get('contact_name')||'').toString().trim(),
-      contact_email:(fd.get('contact_email')||'').toString().trim(),
-      contact_phone:(fd.get('contact_phone')||'').toString().trim(),
-      team_name:(fd.get('team_name')||'').toString().trim(),
-      guardian_name:(fd.get('guardian_name')||'').toString().trim(),
-      guardian_email:(fd.get('guardian_email')||'').toString().trim(),
-      athletes,
-      waiver_accepted:document.getElementById('waiverAccepted27').checked,
-      waiver_signature_name:document.getElementById('waiverSignature27').value.trim()
-    };
+    const payload={category:reg27Category,contact_name:(fd.get('contact_name')||'').toString().trim(),contact_email:(fd.get('contact_email')||'').toString().trim(),contact_phone:(fd.get('contact_phone')||'').toString().trim(),team_name:(fd.get('team_name')||'').toString().trim(),guardian_name:(fd.get('guardian_name')||'').toString().trim(),guardian_email:(fd.get('guardian_email')||'').toString().trim(),athletes,waiver_accepted:document.getElementById('waiverAccepted27').checked,waiver_signature_name:document.getElementById('waiverSignature27').value.trim()};
     const r=await fetch(P+'/functions/v1/submit-mfg27-registration',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    const data=await r.json().catch(()=>({}));
-    if(!r.ok||data?.error)throw new Error(data?.error||'Could not save registration');
-
-    status.textContent=`${data.registration_code} created. ${data.team_waivers_pending?data.team_waivers_pending+' teammate waivers remain pending. ':''}${data.payment_enabled?'Opening secure payment…':'Payment is not live yet — entry saved in build/test mode.'}`;
+    const data=await r.json().catch(()=>({}));if(!r.ok||data?.error)throw new Error(data?.error||'Could not save registration');
     status.classList.add('good');
-
-    if(data.payment_enabled){
-      const pr=await fetch(P+'/functions/v1/create-mfg27-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({registration_id:data.registration_id})});
-      const pd=await pr.json().catch(()=>({}));
-      if(!pr.ok||!pd?.url)throw new Error(pd?.error||'Could not start payment');
-      window.location.href=pd.url;
+    if(data.pending_waivers>0){
+      status.textContent=`${data.registration_code} created. ${data.pending_waivers} waiver${data.pending_waivers===1?' is':'s are'} still outstanding. Individual waiver emails have been sent. Payment is LOCKED until they are complete.`;
+      openManage27(data.management_token);
+    }else if(data.payment_enabled){
+      status.textContent=`${data.registration_code} — all waivers complete. Opening secure payment…`;
+      await beginPayment27(data.management_token);
       return;
+    }else{
+      status.textContent=`${data.registration_code} created with all required waivers complete. Payment remains off while registration is in build/test mode.`;
+      openManage27(data.management_token);
     }
-    form.reset();renderReg27Athletes();
-  }catch(err){
-    status.textContent=err.message||String(err);status.classList.add('bad');
-  }finally{btn.disabled=false}
+  }catch(err){status.textContent=err.message||String(err);status.classList.add('bad')}finally{btn.disabled=false}
 });
 
+async function beginPayment27(token){
+  const r=await fetch(P+'/functions/v1/create-mfg27-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({management_token:token})});
+  const d=await r.json().catch(()=>({}));if(!r.ok||!d?.url)throw new Error(d?.error||'Could not start payment');location.href=d.url;
+}
+async function openManage27(token){
+  const ov=document.getElementById('manage27Overlay'),c=document.getElementById('manage27Content');ov.classList.add('on');c.innerHTML='Loading registration…';
+  try{
+    const r=await fetch(P+'/functions/v1/mfg27-registration-status?token='+encodeURIComponent(token));const d=await r.json();if(!r.ok||d?.error)throw new Error(d?.error||'Could not load registration');
+    const reg=d.registration, aa=d.athletes||[];
+    c.innerHTML=`<p><b>${reg.registration_code}</b>${reg.team_name?' — '+reg.team_name:''}</p><div class="waiver-list">${aa.map(a=>`<div class="waiver-person"><div><b>${a.full_name}</b><br><span class="muted">${a.entry_category||''}${a.email?' • '+a.email:''}</span></div><div class="${a.waiver_status==='accepted'?'waiver-ok':'waiver-wait'}">${a.waiver_status==='accepted'?'WAIVER ✓':'WAIVER PENDING'}</div></div>`).join('')}</div><p><b>${aa.length-d.pending_waivers}/${aa.length} waivers complete</b></p><p class="muted">Total: ${money27(reg.amount_cents,reg.currency)}</p><button class="btn ${d.payment_unlocked?'':'pay-lock'}" id="managePay27" ${d.payment_unlocked?'':'disabled'}>${reg.status==='paid'?'PAID ✓':d.pending_waivers?'PAYMENT LOCKED — WAIVERS OUTSTANDING':d.payment_enabled?'CONTINUE TO PAYMENT →':'PAYMENT NOT LIVE YET'}</button>`;
+    const pay=document.getElementById('managePay27');if(pay&&d.payment_unlocked)pay.onclick=()=>beginPayment27(token);
+  }catch(e){c.innerHTML='<p class="reg27-status bad">'+e.message+'</p>'}
+}
+async function openWaiver27(token){
+  const ov=document.getElementById('waiver27Overlay'),c=document.getElementById('waiver27Content');ov.classList.add('on');c.innerHTML='Loading waiver…';
+  try{
+    const r=await fetch(P+'/functions/v1/mfg27-waiver?token='+encodeURIComponent(token));const d=await r.json();if(!r.ok||d?.error)throw new Error(d?.error||'Could not load waiver');
+    const a=d.athlete,reg=d.registration,snap=reg.waiver_snapshot||{};
+    c.innerHTML=`<p>You have been added to <b>${reg.registration_code}</b>${reg.team_name?' — '+reg.team_name:''}.</p><p><b>${a.full_name}</b></p><div class="waiver-box"><h3>${snap.title||'Participation Waiver'}</h3><ul>${(snap.clauses||[]).map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="waiver-warning">You must complete your own waiver before this registration can proceed to payment.</div><label><input id="inviteAccept27" type="checkbox" style="width:auto"> I have read and accept this waiver.</label><label style="display:block;margin-top:12px">Digital signature<input id="inviteSig27" placeholder="Full legal name"></label><button class="btn" id="inviteSubmit27" style="width:100%;margin-top:14px">COMPLETE WAIVER →</button><div id="inviteMsg27" class="reg27-status"></div>`;
+    document.getElementById('inviteSubmit27').onclick=async()=>{const m=document.getElementById('inviteMsg27');m.textContent='Saving waiver…';const pr=await fetch(P+'/functions/v1/mfg27-waiver?token='+encodeURIComponent(token),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({accepted:document.getElementById('inviteAccept27').checked,signature_name:document.getElementById('inviteSig27').value.trim()})});const pd=await pr.json().catch(()=>({}));if(!pr.ok||pd?.error){m.className='reg27-status bad';m.textContent=pd?.error||'Could not save waiver';return}m.className='reg27-status good';m.textContent=pd.all_waivers_complete?'Waiver complete ✓ All required waivers are now complete. The registration contact has been emailed a payment link.':'Waiver complete ✓ Thank you.';document.getElementById('inviteSubmit27').disabled=true};
+  }catch(e){c.innerHTML='<p class="reg27-status bad">'+e.message+'</p>'}
+}
 const qs27=new URLSearchParams(location.search);
-if(qs27.get('mfg27')==='success'){
-  setTimeout(()=>{show('register');const s=document.getElementById('reg27Status');if(s){s.textContent='Payment received. Your registration will show as PAID / CONFIRMED once Stripe confirmation is processed.';s.className='reg27-status good'}},200);
-}
-if(qs27.get('mfg27')==='cancelled'){
-  setTimeout(()=>{show('register');const s=document.getElementById('reg27Status');if(s){s.textContent='Payment was cancelled. Your registration is saved but is not confirmed as paid.';s.className='reg27-status bad'}},200);
-}
+if(qs27.get('mfg27')==='success'){setTimeout(()=>{show('register');const s=document.getElementById('reg27Status');if(s){s.textContent='Payment received. Registration will show as PAID / CONFIRMED once Stripe confirms it.';s.className='reg27-status good'}},200)}
+if(qs27.get('mfg27manage'))setTimeout(()=>openManage27(qs27.get('mfg27manage')),300);
+if(qs27.get('mfg27waiver'))setTimeout(()=>openWaiver27(qs27.get('mfg27waiver')),300);
 
 async function load2027Registrations(){
   const rows=document.getElementById('registrationRows');if(!rows||!db)return;
   rows.innerHTML='<tr><td colspan="7">Loading…</td></tr>';
-  const {data:{session}}=await db.auth.getSession();
-  if(!session){rows.innerHTML='<tr><td colspan="7">Sign in as Owner/Admin to view registrations.</td></tr>';return}
+  const {data:{session}}=await db.auth.getSession();if(!session){rows.innerHTML='<tr><td colspan="7">Sign in as Owner/Admin to view registrations.</td></tr>';return}
   const r=await fetch(P+'/functions/v1/owner-manage-staff',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},body:JSON.stringify({action:'list_2027_registrations'})});
-  const data=await r.json().catch(()=>({}));
-  if(!r.ok||data?.error){rows.innerHTML=`<tr><td colspan="7">${data?.error||'Could not load registrations'}</td></tr>`;return}
-  const athletes=data.athletes||[];
-  const regs=data.registrations||[];
-  rows.innerHTML=regs.length?regs.map(x=>{
-    const aa=athletes.filter(a=>a.registration_id===x.id);
-    const accepted=aa.filter(a=>a.waiver_status==='accepted').length;
-    const amount=money27(x.amount_cents,x.currency);
-    return `<tr><td><b>${x.registration_code||''}</b>${x.team_name?'<br><span class="muted">'+x.team_name+'</span>':''}</td><td>${x.category||''}</td><td>${x.contact_name||''}<br><span class="muted">${x.contact_email||''}</span></td><td>${aa.length} athlete${aa.length===1?'':'s'}<br><span class="muted">${accepted}/${aa.length} waivers</span></td><td><span class="status-pill status-${x.status}">${(x.status||'').replace('_',' ')}</span></td><td>${amount}</td><td>${x.created_at?new Date(x.created_at).toLocaleDateString():''}</td></tr>`;
-  }).join(''):'<tr><td colspan="7">No 2027 registrations yet.</td></tr>';
+  const data=await r.json().catch(()=>({}));if(!r.ok||data?.error){rows.innerHTML=`<tr><td colspan="7">${data?.error||'Could not load registrations'}</td></tr>`;return}
+  const athletes=data.athletes||[],regs=data.registrations||[];
+  rows.innerHTML=regs.length?regs.map(x=>{const aa=athletes.filter(a=>a.registration_id===x.id),accepted=aa.filter(a=>a.waiver_status==='accepted').length;return `<tr><td><b>${x.registration_code||''}</b>${x.team_name?'<br><span class="muted">'+x.team_name+'</span>':''}</td><td>${x.category||''}</td><td>${x.contact_name||''}<br><span class="muted">${x.contact_email||''}</span></td><td>${aa.length} athlete${aa.length===1?'':'s'}<br><span class="muted">${accepted}/${aa.length} waivers</span></td><td><span class="status-pill status-${x.status}">${(x.status||'').replace('_',' ')}</span></td><td>${money27(x.amount_cents,x.currency)}</td><td>${x.created_at?new Date(x.created_at).toLocaleDateString():''}</td></tr>`}).join(''):'<tr><td colspan="7">No 2027 registrations yet.</td></tr>';
 }
 document.getElementById('refreshRegistrationsBtn')?.addEventListener('click',load2027Registrations);
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-v="admin"]');if(b)setTimeout(load2027Registrations,550)});
 setTimeout(load2027Registrations,1700);
 
+
 </script>
 
 <div class="shop-modal" id="productModal"><div class="shop-modal-card"><button class="shop-close" id="closeProduct" type="button" aria-label="Close product">×</button><div class="product-detail"><div class="product-detail-img" id="productDetailImg"></div><div class="product-detail-copy"><div class="ey" id="productDetailType">MFG OFFICIAL STORE</div><h2 id="productDetailName">PRODUCT</h2><div class="product-price" id="productDetailPrice">€0</div><p class="muted" id="productDetailDesc"></p><div class="ey">SELECT SIZE</div><div class="size-row" id="sizeRow"></div><button class="btn" id="addProductToCart">ADD TO CART</button><p class="muted" style="margin-top:14px;font-size:12px">Store preview only — checkout will activate when Shopify is connected.</p></div></div></div></div>
 <aside class="cart-panel" id="cartPanel"><div class="cart-panel-head"><div><div class="ey">MFG STORE</div><h2 style="margin:3px 0">YOUR CART</h2></div><button class="btn" id="closeCart" type="button" aria-label="Close cart">×</button></div><div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.</div></div><div class="cart-total"><span>Total</span><span id="cartTotal">€0</span></div><button class="btn checkout-disabled" style="width:100%" disabled>CHECKOUT — COMING SOON</button><p class="muted" style="font-size:12px">Shopify will handle secure checkout, payments, stock and order emails when connected.</p></aside>
+
+<div class="mfg27-overlay" id="waiver27Overlay">
+  <div class="mfg27-box">
+    <button class="btn mfg27-close" type="button" onclick="document.getElementById('waiver27Overlay').classList.remove('on')">×</button>
+    <div class="ey">MAYO FIT GAMES 2027</div>
+    <h2>COMPLETE YOUR WAIVER</h2>
+    <div id="waiver27Content">Loading…</div>
+  </div>
+</div>
+
+<div class="mfg27-overlay" id="manage27Overlay">
+  <div class="mfg27-box">
+    <button class="btn mfg27-close" type="button" onclick="document.getElementById('manage27Overlay').classList.remove('on')">×</button>
+    <div class="ey">MAYO FIT GAMES 2027</div>
+    <h2>REGISTRATION STATUS</h2>
+    <div id="manage27Content">Loading…</div>
+  </div>
+</div>
+
 <div class="lead-modal" id="interestModal" onclick="if(event.target===this)this.classList.remove('on')">
   <div class="lead-box">
     <button class="lead-close" type="button" aria-label="Close" onclick="document.getElementById('interestModal').classList.remove('on')">×</button>
