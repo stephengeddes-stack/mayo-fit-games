@@ -1276,4 +1276,98 @@ window.addEventListener('hashchange',()=>applyShareHash(location.hash,false));
 setTimeout(()=>applyShareHash(location.hash||'#home',false),120);
 
 </script>
+
+<style>
+#mfg27SuccessOverlay{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+#mfg27SuccessOverlay.on{display:flex}
+.mfg27-success-card{width:min(720px,100%);background:#0b0b0b;border:1px solid #3b3b3b;padding:clamp(28px,6vw,58px);box-shadow:0 30px 100px rgba(0,0,0,.7);text-align:center}
+.mfg27-success-tick{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;border:2px solid #76d45b;color:#9bf27f;font-size:38px;font-weight:950}
+.mfg27-success-card h1{font-size:clamp(54px,10vw,96px);line-height:.88;margin:8px 0 12px}
+.mfg27-success-card .lead{font-size:18px;color:#d5d5d5;margin:0 auto 26px;max-width:560px}
+.mfg27-receipt{border-top:1px solid #333;border-bottom:1px solid #333;margin:26px 0;padding:8px 0;text-align:left}
+.mfg27-receipt-row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #222}
+.mfg27-receipt-row:last-child{border-bottom:0}.mfg27-receipt-row span:first-child{color:#929292}.mfg27-ok{color:#9bf27f;font-weight:950}
+.mfg27-success-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.mfg27-success-note{font-size:13px;color:#999;margin-top:18px}
+.mfg27-verify-spinner{width:34px;height:34px;border:3px solid #333;border-top-color:#f15a24;border-radius:50%;margin:18px auto;animation:mfgspin .8s linear infinite}
+@keyframes mfgspin{to{transform:rotate(360deg)}}
+</style>
+<div id="mfg27SuccessOverlay" aria-live="polite">
+  <div class="mfg27-success-card">
+    <div id="mfg27SuccessLoading">
+      <div class="ey">MAYO FIT GAMES 2027</div>
+      <h2>VERIFYING PAYMENT</h2>
+      <div class="mfg27-verify-spinner"></div>
+      <p class="muted">Hold tight — we're confirming your registration securely with Stripe.</p>
+    </div>
+    <div id="mfg27SuccessVerified" style="display:none">
+      <div class="mfg27-success-tick">✓</div>
+      <div class="ey">MAYO FIT GAMES 2027</div>
+      <h1>YOU'RE IN.</h1>
+      <p class="lead">Payment successful. Your place at Mayo Fit Games is confirmed.</p>
+      <div class="mfg27-receipt">
+        <div class="mfg27-receipt-row"><span>Registration</span><b id="mfg27SuccessCode">—</b></div>
+        <div class="mfg27-receipt-row"><span>Entry</span><b id="mfg27SuccessEntry">—</b></div>
+        <div class="mfg27-receipt-row"><span>Payment</span><b class="mfg27-ok" id="mfg27SuccessAmount">PAID ✓</b></div>
+        <div class="mfg27-receipt-row"><span>Waiver</span><b class="mfg27-ok" id="mfg27SuccessWaiver">COMPLETE ✓</b></div>
+      </div>
+      <p>A confirmation has also been sent to your registration email.</p>
+      <div class="mfg27-success-actions">
+        <button class="btn" id="mfg27SuccessHome" type="button">RETURN HOME</button>
+      </div>
+      <div class="mfg27-success-note">Keep your registration confirmation email for your records.<br><b>STRONGER TOGETHER.</b></div>
+    </div>
+    <div id="mfg27SuccessError" style="display:none">
+      <div class="ey">MAYO FIT GAMES 2027</div>
+      <h2>PAYMENT RECEIVED</h2>
+      <p class="lead">We're still confirming the registration. Do not pay again.</p>
+      <p class="muted" id="mfg27SuccessErrorText">Your payment may take a few moments to update.</p>
+      <button class="btn" id="mfg27SuccessRetry" type="button">CHECK AGAIN</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const qs=new URLSearchParams(location.search);
+  if(qs.get('mfg27')!=='success') return;
+  const sid=qs.get('session_id');
+  const ov=document.getElementById('mfg27SuccessOverlay');
+  const loading=document.getElementById('mfg27SuccessLoading');
+  const verified=document.getElementById('mfg27SuccessVerified');
+  const error=document.getElementById('mfg27SuccessError');
+  ov.classList.add('on');
+
+  function money(cents,currency){
+    try{return new Intl.NumberFormat('en-IE',{style:'currency',currency:String(currency||'eur').toUpperCase()}).format(Number(cents||0)/100)}
+    catch(e){return '€'+(Number(cents||0)/100).toFixed(2)}
+  }
+  function entryLabel(r){
+    if(r.team_name) return r.team_name+' — Team of 4';
+    return ({male:'Male Singles',female:'Female Singles',team:'Team of 4',junior:'Junior Fit Games',multi:'Family / Multiple Entries'})[r.category]||r.category||'Mayo Fit Games Entry';
+  }
+  async function verify(){
+    loading.style.display='block';verified.style.display='none';error.style.display='none';
+    if(!sid){showError('The Stripe session reference is missing. If your card was charged, do not pay again.');return}
+    try{
+      const base=(typeof P!=='undefined'?P:'https://iykulnhktpvhurooykgk.supabase.co');
+      const r=await fetch(base+'/functions/v1/mfg27-payment-success?session_id='+encodeURIComponent(sid),{cache:'no-store'});
+      const d=await r.json().catch(()=>({}));
+      if(r.status===202||d.verified===false){setTimeout(verify,1400);return}
+      if(!r.ok||!d.verified) throw new Error(d.error||'Could not verify payment');
+      const reg=d.registration||{};
+      document.getElementById('mfg27SuccessCode').textContent=reg.registration_code||'Confirmed';
+      document.getElementById('mfg27SuccessEntry').textContent=entryLabel(reg);
+      document.getElementById('mfg27SuccessAmount').textContent=money(reg.amount_cents,reg.currency)+' — PAID ✓';
+      document.getElementById('mfg27SuccessWaiver').textContent=d.waivers_complete?'COMPLETE ✓':'CHECK REQUIRED';
+      loading.style.display='none';verified.style.display='block';
+      history.replaceState({},'',location.pathname+'#registration-confirmed');
+    }catch(e){showError(e.message||'Confirmation is taking longer than expected.')}
+  }
+  function showError(msg){loading.style.display='none';error.style.display='block';document.getElementById('mfg27SuccessErrorText').textContent=msg}
+  document.getElementById('mfg27SuccessRetry').onclick=verify;
+  document.getElementById('mfg27SuccessHome').onclick=()=>{ov.classList.remove('on');history.replaceState({},'',location.pathname);if(typeof show==='function')show('home');else location.href=location.pathname};
+  verify();
+})();
+</script>
+
 </body></html>
