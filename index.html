@@ -248,6 +248,20 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
 .cart-panel{position:fixed;top:0;right:0;bottom:0;width:min(430px,94vw);background:#0b0b0b;border-left:1px solid #444;z-index:100;transform:translateX(105%);transition:.25s;padding:24px;overflow:auto}.cart-panel.on{transform:translateX(0)}.cart-panel-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #333;padding-bottom:14px}.cart-items{margin:18px 0}.cart-item{padding:13px 0;border-bottom:1px solid #292929;display:flex;justify-content:space-between;gap:14px}.cart-empty{color:#888;padding:30px 0}.cart-total{display:flex;justify-content:space-between;font-size:22px;font-weight:950;margin:20px 0}.checkout-disabled{opacity:.55;cursor:not-allowed}
 @media(max-width:900px){.store-grid{grid-template-columns:1fr 1fr}.product-detail{grid-template-columns:1fr}.product-detail-img{min-height:360px}}@media(max-width:620px){.store-grid{grid-template-columns:1fr}.shop-hero{min-height:420px;padding:28px 20px}.product-image{height:310px}.store-note{align-items:flex-start;flex-direction:column}}
 
+
+/* ===== MFG 2027 REGISTRATION + WAIVER + PAYMENT ===== */
+.reg27-hero{border:1px solid #4a2a1e;background:radial-gradient(circle at 85% 5%,rgba(241,90,36,.18),transparent 32%),linear-gradient(145deg,#15100e,#090909);padding:clamp(28px,6vw,58px);overflow:hidden;position:relative}
+.reg27-hero:after{content:"2027";position:absolute;right:-18px;top:-35px;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:clamp(150px,26vw,310px);color:rgba(241,90,36,.08);line-height:.85;pointer-events:none}
+.reg27-hero>*{position:relative;z-index:1}.reg27-hero h1{font-size:clamp(54px,9vw,104px);line-height:.84;margin:8px 0 14px}.reg27-hero p{max-width:760px;font-size:18px;line-height:1.55;color:#c7c3bf}
+.reg27-mode{display:inline-flex;align-items:center;gap:8px;border:1px solid #6a482d;background:#17100d;padding:8px 11px;font-size:11px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;color:#ffb07a}
+.reg27-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.reg27-cat{border:1px solid #333;background:#101010;padding:18px;text-align:left;color:#fff;cursor:pointer;min-height:118px}.reg27-cat.active{border-color:var(--orange);box-shadow:inset 0 -4px 0 var(--orange)}.reg27-cat b{display:block;font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:24px;text-transform:uppercase}.reg27-cat small{display:block;color:#888;margin-top:7px}.reg27-price{color:var(--orange);font-weight:950;margin-top:8px}
+.reg27-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.reg27-card{border:1px solid #323232;background:#101010;padding:20px;margin:14px 0}.reg27-card h3{margin:3px 0 12px}.reg27-card .form{margin-top:12px}.athlete-block{border-top:1px solid #2f2f2f;padding-top:16px;margin-top:16px}.athlete-block:first-child{border-top:0;padding-top:0;margin-top:0}
+.waiver-box{max-height:290px;overflow:auto;border:1px solid #3b3b3b;background:#090909;padding:18px;line-height:1.6;color:#c5c5c5}.waiver-box h3{color:#fff}.waiver-box ul{padding-left:20px}.waiver-warning{border-left:4px solid var(--orange);padding:12px 14px;background:#17100d;color:#e7c5ae;margin:14px 0;font-size:13px}
+.reg27-summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;border-top:1px solid #333;padding-top:18px;margin-top:18px}.reg27-total{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:34px}.reg27-status{min-height:24px;margin-top:12px;color:#bbb}.reg27-status.good{color:#9ee072}.reg27-status.bad{color:#ff8e7f}
+.payment-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.payment-step{border:1px solid #303030;padding:12px;background:#0d0d0d;font-size:11px;font-weight:900;letter-spacing:.06em;text-transform:uppercase}.payment-step span{display:block;color:var(--orange);font-size:18px;margin-bottom:3px}
+.reg-admin-card{border-color:#4a2a1e!important}.status-pill{display:inline-block;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:950;text-transform:uppercase;letter-spacing:.08em;border:1px solid #444}.status-paid{color:#a6e88b;border-color:#4d7c3d}.status-payment_pending{color:#ffd28e;border-color:#7a5f31}.status-draft{color:#bbb}.status-refunded,.status-cancelled{color:#ff9d91;border-color:#76423d}
+@media(max-width:850px){.reg27-grid{grid-template-columns:1fr 1fr}.payment-steps{grid-template-columns:1fr 1fr}}@media(max-width:650px){.reg27-grid{grid-template-columns:1fr}.reg27-form{grid-template-columns:1fr}.reg27-summary{grid-template-columns:1fr}.payment-steps{grid-template-columns:1fr}}
+
 </style></head><body><header class="wrap"><div class="top"><div><div class="ey">MAYO FIT GAMES</div><b>STRONGER TOGETHER</b><div class="brand-stripe"><span></span><span></span><span></span></div></div><span id="status" class="btn">CONNECTING</span></div></header><nav><button data-v="home" class="active">Home</button><button data-v="about">About</button><button data-v="results">Results</button><button data-v="register">Register</button><button data-v="gallery">Gallery</button><button data-v="shop">Shop</button><button data-v="sponsors">Sponsors</button><button data-v="junior">Junior Fit Games</button><button data-v="admin">Admin / Judge</button></nav><main class="wrap"><section id="home" class="view on"><div class="card hero"><div class="ey">MAYO FIT GAMES 2026</div><h1>Find Mayo's Fittest</h1><p class="muted">Live scoring, results, competitors, registrations and the story of the Games.</p><p><button class="btn" data-go="results">View live leaderboard</button> <button class="btn" data-go="gallery">View 2026 gallery</button></p><div class="brand-stripe"><span></span><span></span><span></span></div><p><button class="btn" data-go="junior">Junior Fit Games</button></p></div><div class="photo-break photo-three"><div class="photo-break-copy"><div class="ey">FIT • GRIT • COMMUNITY</div><h2>ONE DAY. ONE COMMUNITY.</h2><p>Competition at the sharp end. Fun, atmosphere and a place for every level everywhere else.</p></div></div><div class="card event-film">
 <div class="card next-chapter">
   <div class="next-chapter-copy">
@@ -255,7 +269,7 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
     <h2>THE NEXT CHAPTER STARTS HERE.</h2>
     <p class="lead">From first-time competitors to athletes chasing the top spot, Mayo Fit Games is built around one thing: bringing people together for a huge day of competition, atmosphere and community.</p>
     <div class="next-chapter-actions">
-      <button class="btn primary" type="button" onclick="document.getElementById('interestModal').classList.add('on')">REGISTER INTEREST →</button>
+      <button class="btn primary" type="button" data-go="register">2027 REGISTRATION →</button>
       <button class="btn secondary" type="button" onclick="document.getElementById('sponsorModal').classList.add('on')">BECOME A 2027 SPONSOR →</button>
     </div>
   </div>
@@ -330,7 +344,91 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
   <p class="muted">Select a division to view the final placings. The standings are connected directly to the Mayo Fit Games database.</p>
   <div class="table"><table><thead><tr><th>Rank</th><th>Competitor</th><th>Division</th><th>Events</th><th>Points</th></tr></thead><tbody id="rows"><tr><td colspan="5">Loading…</td></tr></tbody></table></div>
 </div>
-</section><section id="register" class="view"><div class="card"><div class="ey">FUTURE EVENTS</div><h2>Registration & Waiver</h2><form id="reg" class="form"><label>Full name<input name="full_name" required></label><label>Email<input type="email" name="email" required></label><label>Phone<input name="phone"></label><label>Date of birth<input type="date" name="date_of_birth"></label><label>Division<select name="division_name"><option>Male Singles</option><option>Female Singles</option><option>Team</option><option>Junior</option></select></label><label>Team name<input name="team_name"></label><label class="full">Medical notes<textarea name="medical_notes"></textarea></label><label class="full"><input style="width:auto" type="checkbox" name="waiver_accepted" required> I accept the event waiver and understand the inherent risks of participation.</label><label class="full"><input style="width:auto" type="checkbox" name="photo_consent"> I consent to event photography/video being used by Mayo Fit Games.</label><button class="btn full">Submit registration</button></form><p id="msg"></p></div></section><section id="gallery" class="view"><div class="card"><div class="ey">2026 EVENT DAY</div><h2>Gallery</h2><p class="muted">Action, teams, Junior Fit Games and moments from Project Padel Mayo.</p><div id="photos" class="gallery"></div></div></section>
+</section>
+<section id="register" class="view">
+  <div class="reg27-hero">
+    <div class="ey">MAYO FIT GAMES 2027</div>
+    <h1>REGISTER.<br>ACCEPT.<br>COMPETE.</h1>
+    <p>One registration flow for athlete details, waiver acceptance and secure payment. Team captains register and pay for the team; the remaining team waivers are tracked separately.</p>
+    <div class="reg27-mode" id="reg27Mode">● REGISTRATION BUILD MODE</div>
+  </div>
+
+  <div class="payment-steps">
+    <div class="payment-step"><span>01</span>Choose category</div>
+    <div class="payment-step"><span>02</span>Enter athletes</div>
+    <div class="payment-step"><span>03</span>Accept waiver</div>
+    <div class="payment-step"><span>04</span>Secure payment</div>
+  </div>
+
+  <div class="card">
+    <div class="ey">STEP 1</div>
+    <h2>Choose Your Entry.</h2>
+    <div class="reg27-grid" id="reg27Categories">
+      <button type="button" class="reg27-cat active" data-cat="male"><b>Male Singles</b><small>Individual entry</small><div class="reg27-price" data-price="male">Loading…</div></button>
+      <button type="button" class="reg27-cat" data-cat="female"><b>Female Singles</b><small>Individual entry</small><div class="reg27-price" data-price="female">Loading…</div></button>
+      <button type="button" class="reg27-cat" data-cat="team"><b>Team</b><small>4 athletes • one payment</small><div class="reg27-price" data-price="team">Loading…</div></button>
+      <button type="button" class="reg27-cat" data-cat="junior"><b>Junior</b><small>Parent / guardian consent</small><div class="reg27-price" data-price="junior">Loading…</div></button>
+    </div>
+  </div>
+
+  <form id="reg27Form">
+    <div class="reg27-card">
+      <div class="ey">STEP 2</div><h3>Contact Details</h3>
+      <div class="reg27-form">
+        <label>Primary contact name<input name="contact_name" required autocomplete="name"></label>
+        <label>Email<input name="contact_email" type="email" required autocomplete="email"></label>
+        <label>Phone<input name="contact_phone" type="tel" autocomplete="tel"></label>
+        <label id="teamNameWrap" style="display:none">Team name<input name="team_name"></label>
+      </div>
+    </div>
+
+    <div class="reg27-card">
+      <div class="ey">ATHLETE DETAILS</div><h3 id="athleteTitle">Competitor</h3>
+      <div id="reg27Athletes"></div>
+    </div>
+
+    <div class="reg27-card" id="guardianWrap" style="display:none">
+      <div class="ey">JUNIOR ENTRY</div><h3>Parent / Guardian</h3>
+      <div class="reg27-form">
+        <label>Parent / guardian name<input name="guardian_name"></label>
+        <label>Parent / guardian email<input name="guardian_email" type="email"></label>
+      </div>
+    </div>
+
+    <div class="reg27-card">
+      <div class="ey">STEP 3</div><h3>Participation Waiver & Declaration</h3>
+      <div class="waiver-warning"><b>Draft system wording.</b> The registration technology is being built now. The final waiver wording should be approved by the event insurer and/or an Irish solicitor before paid registration opens.</div>
+      <div class="waiver-box">
+        <h3>Mayo Fit Games 2027 — Participation Waiver</h3>
+        <p>By entering Mayo Fit Games, I acknowledge that fitness competition involves strenuous physical activity and carries an inherent risk of injury.</p>
+        <ul>
+          <li>I confirm the information supplied in this registration is accurate.</li>
+          <li>I am responsible for deciding whether I am fit to participate and will seek medical advice where appropriate.</li>
+          <li>I agree to follow the competition rules, venue rules and reasonable safety instructions from organisers and officials.</li>
+          <li>I understand that event photography and video may be captured. Final media-consent wording will form part of the approved waiver before launch.</li>
+          <li>For team entries, this signature covers the signing athlete only. The remaining team members must complete their own waiver before competing.</li>
+          <li>For a junior entry, the parent/guardian confirms consent on behalf of the junior participant.</li>
+        </ul>
+      </div>
+      <div style="margin-top:16px">
+        <label class="full"><input id="waiverAccepted27" style="width:auto" type="checkbox" required> I have read and accept the waiver/declaration above.</label>
+        <label class="full" style="display:block;margin-top:12px">Digital signature — type your full name<input id="waiverSignature27" required placeholder="Full legal name"></label>
+      </div>
+    </div>
+
+    <div class="reg27-card">
+      <div class="ey">STEP 4</div><h3>Registration & Payment</h3>
+      <p class="muted">Your entry is only marked <b>PAID / CONFIRMED</b> after Stripe confirms a successful payment. Abandoned or failed payments remain separate in the admin dashboard.</p>
+      <div class="reg27-summary">
+        <div><div class="muted">Selected entry</div><b id="reg27SelectedLabel">Male Singles</b></div>
+        <div class="reg27-total" id="reg27Total">—</div>
+      </div>
+      <button class="btn" id="reg27Submit" type="submit" style="width:100%;margin-top:16px">SAVE REGISTRATION & CONTINUE TO PAYMENT →</button>
+      <div id="reg27Status" class="reg27-status"></div>
+    </div>
+  </form>
+</section>
+<section id="gallery" class="view"><div class="card"><div class="ey">2026 EVENT DAY</div><h2>Gallery</h2><p class="muted">Action, teams, Junior Fit Games and moments from Project Padel Mayo.</p><div id="photos" class="gallery"></div></div></section>
 <section id="shop" class="view">
 <div class="card shop-hero"><div class="shop-hero-copy"><div class="ey">MFG // OFFICIAL STORE</div><h1>WEAR THE GAMES.</h1><p>Competition kit, event editions and everyday pieces built around Mayo Fit Games. First drop preview — Shopify checkout comes next.</p><p><button class="btn" onclick="document.getElementById('shopProducts').scrollIntoView({behavior:'smooth'})">SHOP THE DROP ↓</button></p></div></div>
 <div class="shop-bar" id="shopProducts"><div class="shop-filters"><button class="shop-filter active" data-filter="all">All</button><button class="shop-filter" data-filter="tees">Tees</button><button class="shop-filter" data-filter="hoodies">Hoodies</button><button class="shop-filter" data-filter="accessories">Accessories</button></div><button class="btn" id="openCart">Cart <span class="cart-count" id="cartCount">0</span></button></div>
@@ -393,7 +491,19 @@ nav button:hover,.btn:hover{border-color:var(--orange);cursor:pointer}
       <p class="muted">Create staff logins, choose their role and change judge event access at any time.</p>
 
       
-      <div class="card" id="ownerLeadsCard" style="margin:14px 0;padding:16px">
+      
+      <div class="card reg-admin-card" id="ownerRegistrationsCard" style="margin:14px 0;padding:16px">
+        <div class="ey">OWNER / ADMIN</div>
+        <h3 style="margin-top:8px">2027 Registrations & Payments</h3>
+        <p class="muted">Paid entries, pending payments and waiver status. Stripe confirmation controls the final paid status.</p>
+        <button class="btn" type="button" id="refreshRegistrationsBtn" style="margin-bottom:14px">Refresh Registrations</button>
+        <div class="table"><table>
+          <thead><tr><th>Entry</th><th>Category</th><th>Contact</th><th>Athletes / Waivers</th><th>Payment</th><th>Amount</th><th>Date</th></tr></thead>
+          <tbody id="registrationRows"><tr><td colspan="7">Loading…</td></tr></tbody>
+        </table></div>
+      </div>
+
+<div class="card" id="ownerLeadsCard" style="margin:14px 0;padding:16px">
         <div class="ey">OWNER / ADMIN</div>
         <h3 style="margin-top:8px">2027 Leads</h3>
         <p class="muted">Athlete interest and sponsorship enquiries submitted through the website.</p>
@@ -526,7 +636,7 @@ function render(){
   a.sort((a,b)=>Number(b.total_points)-Number(a.total_points));
   q('#rows').innerHTML=a.length?a.map((x,i)=>`<tr><td><b>${i+1}</b></td><td><b>${x.display_name}</b></td><td>${dn(x.division_id)}</td><td>${x.events_scored}</td><td><b>${x.total_points}</b></td></tr>`).join(''):'<tr><td colspan="5">No final results available yet.</td></tr>';
   renderChampions();renderPodiums()
-}q('#filter').onchange=render;if(db)db.channel('live').on('postgres_changes',{event:'*',schema:'public',table:'results'},load).subscribe();q('#reg').onsubmit=async e=>{if(!db){q('#msg').textContent='Registration is unavailable in offline preview mode.';return;}e.preventDefault();let f=new FormData(e.target),o=Object.fromEntries(f.entries());o.event_id=E;o.waiver_accepted=f.has('waiver_accepted');o.photo_consent=f.has('photo_consent');let{error}=await db.from('registrations').insert(o);q('#msg').textContent=error?error.message:'Registration saved successfully.';if(!error)e.target.reset()};load()
+}q('#filter').onchange=render;if(db)db.channel('live').on('postgres_changes',{event:'*',schema:'public',table:'results'},load).subscribe();load()
 // ---- Admin / Judge scoring ----
 const authLoggedOut=document.getElementById('authLoggedOut');
 const authLoggedIn=document.getElementById('authLoggedIn');
@@ -879,6 +989,141 @@ setTimeout(load2027Leads,1500);
 
 
 
+
+
+// ===== MFG 2027 REGISTRATION / WAIVER / PAYMENT =====
+let reg27Category='male';
+let reg27Config={};
+
+function money27(cents,currency='eur'){
+  if(!Number.isFinite(Number(cents)))return '—';
+  return new Intl.NumberFormat('en-IE',{style:'currency',currency:String(currency).toUpperCase()}).format(Number(cents)/100);
+}
+async function loadReg27Config(){
+  try{
+    const r=await fetch(P+'/functions/v1/mfg27-registration-config');
+    const data=await r.json();
+    if(!r.ok||data?.error)throw new Error(data?.error||'Could not load prices');
+    reg27Config=Object.fromEntries((data.config||[]).map(x=>[x.category,x]));
+    document.querySelectorAll('[data-price]').forEach(el=>{
+      const c=reg27Config[el.dataset.price];
+      el.textContent=c?(c.enabled?money27(c.amount_cents,c.currency):money27(c.amount_cents,c.currency)+' • NOT LIVE'):'—';
+    });
+    updateReg27Summary();
+    const anyLive=Object.values(reg27Config).some(x=>x.enabled);
+    const mode=document.getElementById('reg27Mode');
+    if(mode)mode.textContent=anyLive?'● REGISTRATION OPEN':'● BUILD / TEST MODE — PAYMENTS OFF';
+  }catch(e){
+    document.querySelectorAll('[data-price]').forEach(el=>el.textContent='Price TBC');
+  }
+}
+function athleteFields27(i,count){
+  const label=count>1?`Athlete ${i+1}${i===0?' — Team Captain':''}`:'Competitor';
+  return `<div class="athlete-block" data-athlete="${i}">
+    <div class="ey">${label}</div>
+    <div class="reg27-form">
+      <label>Full name<input data-af="full_name" required></label>
+      <label>Email<input data-af="email" type="email" ${count>1&&i>0?'required':''}></label>
+      <label>Phone<input data-af="phone" type="tel"></label>
+      <label>Date of birth<input data-af="date_of_birth" type="date"></label>
+      <label>Emergency contact name<input data-af="emergency_contact_name"></label>
+      <label>Emergency contact phone<input data-af="emergency_contact_phone" type="tel"></label>
+    </div>
+  </div>`;
+}
+function renderReg27Athletes(){
+  const count=reg27Category==='team'?4:1;
+  const holder=document.getElementById('reg27Athletes');
+  if(holder)holder.innerHTML=Array.from({length:count},(_,i)=>athleteFields27(i,count)).join('');
+  const team=document.getElementById('teamNameWrap'); if(team)team.style.display=reg27Category==='team'?'block':'none';
+  const guardian=document.getElementById('guardianWrap'); if(guardian)guardian.style.display=reg27Category==='junior'?'block':'none';
+  const title=document.getElementById('athleteTitle'); if(title)title.textContent=reg27Category==='team'?'Team of 4':(reg27Category==='junior'?'Junior Competitor':'Competitor');
+  const gName=document.querySelector('[name="guardian_name"]'),gEmail=document.querySelector('[name="guardian_email"]');
+  if(gName)gName.required=reg27Category==='junior'; if(gEmail)gEmail.required=reg27Category==='junior';
+}
+function updateReg27Summary(){
+  const cfg=reg27Config[reg27Category];
+  const label=document.getElementById('reg27SelectedLabel');
+  const total=document.getElementById('reg27Total');
+  if(label)label.textContent=cfg?.label||({male:'Male Singles',female:'Female Singles',team:'Team Entry',junior:'Junior Fit Games'}[reg27Category]);
+  if(total)total.textContent=cfg?money27(cfg.amount_cents,cfg.currency):'Price TBC';
+}
+document.querySelectorAll('.reg27-cat').forEach(btn=>btn.addEventListener('click',()=>{
+  reg27Category=btn.dataset.cat;
+  document.querySelectorAll('.reg27-cat').forEach(x=>x.classList.toggle('active',x===btn));
+  renderReg27Athletes();updateReg27Summary();
+}));
+renderReg27Athletes();loadReg27Config();
+
+document.getElementById('reg27Form')?.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.currentTarget,btn=document.getElementById('reg27Submit'),status=document.getElementById('reg27Status');
+  status.className='reg27-status';status.textContent='Saving registration…';btn.disabled=true;
+  try{
+    const fd=new FormData(form);
+    const athletes=[...document.querySelectorAll('#reg27Athletes [data-athlete]')].map(block=>{
+      const o={};block.querySelectorAll('[data-af]').forEach(inp=>o[inp.dataset.af]=inp.value.trim());return o;
+    });
+    const payload={
+      category:reg27Category,
+      contact_name:(fd.get('contact_name')||'').toString().trim(),
+      contact_email:(fd.get('contact_email')||'').toString().trim(),
+      contact_phone:(fd.get('contact_phone')||'').toString().trim(),
+      team_name:(fd.get('team_name')||'').toString().trim(),
+      guardian_name:(fd.get('guardian_name')||'').toString().trim(),
+      guardian_email:(fd.get('guardian_email')||'').toString().trim(),
+      athletes,
+      waiver_accepted:document.getElementById('waiverAccepted27').checked,
+      waiver_signature_name:document.getElementById('waiverSignature27').value.trim()
+    };
+    const r=await fetch(P+'/functions/v1/submit-mfg27-registration',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data=await r.json().catch(()=>({}));
+    if(!r.ok||data?.error)throw new Error(data?.error||'Could not save registration');
+
+    status.textContent=`${data.registration_code} created. ${data.team_waivers_pending?data.team_waivers_pending+' teammate waivers remain pending. ':''}${data.payment_enabled?'Opening secure payment…':'Payment is not live yet — entry saved in build/test mode.'}`;
+    status.classList.add('good');
+
+    if(data.payment_enabled){
+      const pr=await fetch(P+'/functions/v1/create-mfg27-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({registration_id:data.registration_id})});
+      const pd=await pr.json().catch(()=>({}));
+      if(!pr.ok||!pd?.url)throw new Error(pd?.error||'Could not start payment');
+      window.location.href=pd.url;
+      return;
+    }
+    form.reset();renderReg27Athletes();
+  }catch(err){
+    status.textContent=err.message||String(err);status.classList.add('bad');
+  }finally{btn.disabled=false}
+});
+
+const qs27=new URLSearchParams(location.search);
+if(qs27.get('mfg27')==='success'){
+  setTimeout(()=>{show('register');const s=document.getElementById('reg27Status');if(s){s.textContent='Payment received. Your registration will show as PAID / CONFIRMED once Stripe confirmation is processed.';s.className='reg27-status good'}},200);
+}
+if(qs27.get('mfg27')==='cancelled'){
+  setTimeout(()=>{show('register');const s=document.getElementById('reg27Status');if(s){s.textContent='Payment was cancelled. Your registration is saved but is not confirmed as paid.';s.className='reg27-status bad'}},200);
+}
+
+async function load2027Registrations(){
+  const rows=document.getElementById('registrationRows');if(!rows||!db)return;
+  rows.innerHTML='<tr><td colspan="7">Loading…</td></tr>';
+  const {data:{session}}=await db.auth.getSession();
+  if(!session){rows.innerHTML='<tr><td colspan="7">Sign in as Owner/Admin to view registrations.</td></tr>';return}
+  const r=await fetch(P+'/functions/v1/owner-manage-staff',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},body:JSON.stringify({action:'list_2027_registrations'})});
+  const data=await r.json().catch(()=>({}));
+  if(!r.ok||data?.error){rows.innerHTML=`<tr><td colspan="7">${data?.error||'Could not load registrations'}</td></tr>`;return}
+  const athletes=data.athletes||[];
+  const regs=data.registrations||[];
+  rows.innerHTML=regs.length?regs.map(x=>{
+    const aa=athletes.filter(a=>a.registration_id===x.id);
+    const accepted=aa.filter(a=>a.waiver_status==='accepted').length;
+    const amount=money27(x.amount_cents,x.currency);
+    return `<tr><td><b>${x.registration_code||''}</b>${x.team_name?'<br><span class="muted">'+x.team_name+'</span>':''}</td><td>${x.category||''}</td><td>${x.contact_name||''}<br><span class="muted">${x.contact_email||''}</span></td><td>${aa.length} athlete${aa.length===1?'':'s'}<br><span class="muted">${accepted}/${aa.length} waivers</span></td><td><span class="status-pill status-${x.status}">${(x.status||'').replace('_',' ')}</span></td><td>${amount}</td><td>${x.created_at?new Date(x.created_at).toLocaleDateString():''}</td></tr>`;
+  }).join(''):'<tr><td colspan="7">No 2027 registrations yet.</td></tr>';
+}
+document.getElementById('refreshRegistrationsBtn')?.addEventListener('click',load2027Registrations);
+document.addEventListener('click',e=>{const b=e.target.closest?.('[data-v="admin"]');if(b)setTimeout(load2027Registrations,550)});
+setTimeout(load2027Registrations,1700);
 
 </script>
 
